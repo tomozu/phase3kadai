@@ -1,0 +1,27 @@
+<div class="container">
+<h1>Topics index</h1><br>
+
+<h3>content</h3>
+<!--<p><%= notice %></p><br>-->
+
+ <% @topics.each do |topic| %>
+ <p>topic : <%= topic.content %></p>
+ <p>user name : <%= topic.user.name %></p>
+ <p><%= image_tag topic.image %></p>
+ 
+ <div class="topic_links">
+  <p><%= link_to 'confirm the details', topic_path(topic.id), class: 'btn btn-default' %>
+     <% if topic.user_id == current_user.id %>
+      <%= link_to 'update a topic', edit_topic_path(topic.id), data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %>
+      <%= link_to 'to delete a topic', topic_path(topic.id), method: :delete ,data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %>
+  </p>
+ <% end %>
+<% end %> 
+ </div>
+<br>
+ <div class="low">
+  <%= link_to 'Topic new post !!', new_topic_path, class: 'btn btn-danger btn-lg' %>
+<br>
+<br>
+ </div>
+</div>

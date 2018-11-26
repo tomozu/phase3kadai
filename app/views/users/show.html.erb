@@ -1,0 +1,8 @@
+<h1><%= @user.name %>'s page</h1>
+
+<p>mail address: <%= @user.email %></p>
+
+<p><%= image_tag(@user.image.url) if @user.image.url %></p>
+
+<p>my favorite :<% @user.topics.each do |topic| %><%= link_to topic.content, topic_path(topic.id) %></p>
+<% end %>

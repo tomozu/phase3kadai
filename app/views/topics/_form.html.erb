@@ -1,0 +1,28 @@
+<%= form_with(model: @topic, local: true ,url: choose_new_or_edit ) do |form| %>
+ <% if @topic.errors.any? %>
+  <div id="error_explanation">
+   <!--<h2><%= @topic.errors.count %>件のエラーがあります。</h2>-->
+   <ul>
+
+   <% @topic.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+   <% end %>
+   </ul>
+  </div>
+<% end %>
+  
+ <div class="topic_content">
+  <p><%= form.label :content %></p>
+  <p><%= form.text_field :content %></p>
+ </div>
+ <div class="field">
+  <p><%= form.label :image %></p>
+  <p><%= image_tag(@topic.image.url) if @topic.image.present? %></p>
+  <p><%= form.file_field :image %></p>
+  <p><%= form.hidden_field :image_cache %></p>
+ </div>
+ <div class="actions">
+  <p><%= form.submit %></p>
+ </div>
+<% end %>
+<%= link_to "back to index", topics_path, class: 'btn btn-danger btn-lg' %>

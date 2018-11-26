@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+   <title>Kanamogram</title>
+   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+   <%= csrf_meta_tags %>
+   <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+   <header>
+    <ul>
+      <nav class="navbar navbar-default">
+        <!--<div class="container-fluid">-->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnavi">
+              <span class="sr-only">Kanamogram</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+    <ul/>        
+     <a class="navbar-brand" href="/">kanamogram</a>
+     </div>
+     <div id="gnavi" class="collapse navbar-collapse">
+       <ul class="nav bar-nav mr-auto">
+        
+    <% if logged_in? %>
+      <%= link_to "Profile", user_path(current_user.id) %>
+      <%= link_to "New post", new_topic_path %>
+      <%= link_to "Index", topics_path %>
+      <%= link_to "Logout", session_path(current_user.id), method: :delete %>
+    <% else %>
+      <%= link_to "Sign up", new_user_path %>
+      <%= link_to "Login", new_session_path %>
+    <% end %>
+    
+       </ul> 
+    </div>
+   </header>
+   
+   <section class="main-header">
+    <%= image_tag"_DSC4098.jpg", class:"image_area" %> 
+   </section>
+
+  <% flash.each do |key, value| %>
+   <%= content_tag(:div, value, class: "#{key}") %>
+  <% end %>
+   
+  <%= yield %>
+   
+   <footer>
+    <p> 2 0 1 8 June tomko kanamori</p>
+   </footer>
+   
+  </body>
+</html>

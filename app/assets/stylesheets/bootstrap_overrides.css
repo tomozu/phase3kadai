@@ -1,0 +1,13 @@
+.imput {
+  color: #000000;
+}
+
+.navbar-default {
+  background-color: #000000;
+  border-color: #e7e7e7;
+}
+
+input[type=file] {
+  margin-left: auto;
+  margin-right: auto;
+}

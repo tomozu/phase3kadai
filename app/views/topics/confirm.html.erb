@@ -1,0 +1,16 @@
+<h3>In the following content, to post..</h3>
+
+<%= form_with(model: @topic, url:topics_path, local: true) do |form| %>
+ <%= form.hidden_field :content %>
+ <%= image_tag(@topic.image.url) %>
+ <%= form.hidden_field :image_cache %>
+ 
+ <P>content:<%= @topic.content %></P>
+ <%= form.submit 'post' %>
+<% end %>
+ 
+<%= form_with(model: @topic, url:new_topic_path, local: true, method: 'get') do |form| %>
+ <%= form.hidden_field :content %>
+ <%= form.hidden_field :image_cache %>
+ <%= form.submit 'back', name: 'back'%>
+<% end %>
