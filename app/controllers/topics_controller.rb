@@ -19,7 +19,7 @@ class TopicsController < ApplicationController
     @topic.user_id = current_user.id
     if @topic.save
       TopicMailer.topic_mail(@topic).deliver
-      redirect_to topics_path, notice:"topic posted!!"
+      redirect_to topics_path,notice:"topic posted!!"
     else
       render'new'
     end
