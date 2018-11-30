@@ -1,0 +1,10 @@
+<h1><%= @user %>'s favorite page</h1>
+
+<% if @favorite  %>
+
+    <p><%= image_tag(@favorite.image.url) %></p>
+    
+    <p>my favorite :<% @favorite.topic.each do |topic| %><%= link_to topic.content, topic_path(topic.id) %></p>
+    
+    <% end %>
+<% end %>
