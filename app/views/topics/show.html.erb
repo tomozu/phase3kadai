@@ -6,8 +6,8 @@
 
 <% unless @topic.user_id == current_user.id %>
  <% if @favorite.present? %>
-  <%= link_to 'Remove a topic from the Favorites', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-default' %>
+  <%= link_to 'Remove a topic from the Favorites', "/topics/#{@topic.id}/favorites/#{@favorite.id}", method: :delete, class: 'btn btn-default' %>
  <% else %>
-  <%= link_to 'Add a Topic to the Favorites', favorites_path(topic_id: @topic.id), method: :post, class: 'btn btn-default' %>
+  <%= link_to 'Add a Topic to the Favorites', topic_favorites_path(@topic.id), method: :post, class: 'btn btn-default' %>
  <% end %>
 <% end %>

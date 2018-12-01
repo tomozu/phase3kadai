@@ -1,0 +1,15 @@
+<h1>favorite page</h1>
+
+<% @topics.each do |topic| %>
+ <p>topic : <%= topic.content %></p>
+ <p>user name : <%= topic.user.name %></p>
+ <p><%= image_tag topic.image %></p>
+ 
+ <div class="topic_links">
+  <p><%= link_to 'confirm the details', topic_path(topic.id), class: 'btn btn-default' %>
+     <% if topic.user_id == current_user.id %>
+      <%= link_to 'update a topic', edit_topic_path(topic.id), data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %>
+      <%= link_to 'to delete a topic', topic_path(topic.id), method: :delete ,data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %>
+  </p>
+ <% end %>
+<% end %>
